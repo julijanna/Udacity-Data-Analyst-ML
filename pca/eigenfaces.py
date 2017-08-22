@@ -66,7 +66,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 ###############################################################################
 # Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled
 # dataset): unsupervised feature extraction / dimensionality reduction
-n_components = 150
+n_components = 250
 
 print "Extracting the top %d eigenfaces from %d faces" % (n_components, X_train.shape[0])
 t0 = time()
@@ -75,11 +75,16 @@ print "done in %0.3fs" % (time() - t0)
 
 eigenfaces = pca.components_.reshape((n_components, h, w))
 
+print "Variance ratio"
+print "First principal component" + str(pca.explained_variance_ratio_[0])
+print "Second principal component" + str(pca.explained_variance_ratio_[1])
+
 print "Projecting the input data on the eigenfaces orthonormal basis"
 t0 = time()
 X_train_pca = pca.transform(X_train)
 X_test_pca = pca.transform(X_test)
 print "done in %0.3fs" % (time() - t0)
+print X_train_pca
 
 
 ###############################################################################
@@ -109,6 +114,14 @@ print "done in %0.3fs" % (time() - t0)
 
 print classification_report(y_test, y_pred, target_names=target_names)
 print confusion_matrix(y_test, y_pred, labels=range(n_classes))
+
+from sklearn.metrics import f1_score
+print "F1 Score"
+print f1_score(y_test, y_pred, average='macro')
+
+from sklearn.metrics import accuracy_score
+print "Accuracy score"
+print accuracy_score(y_test, y_pred)
 
 
 ###############################################################################

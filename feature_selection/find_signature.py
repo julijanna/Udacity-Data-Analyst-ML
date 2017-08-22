@@ -28,6 +28,10 @@ vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5,
 features_train = vectorizer.fit_transform(features_train)
 features_test  = vectorizer.transform(features_test).toarray()
 
+table = vectorizer.get_feature_names()
+
+print "Problematic word: " + table[21323]
+
 
 ### a classic way to overfit is to use a small number
 ### of data points and a large number of features;
@@ -39,5 +43,21 @@ labels_train   = labels_train[:150]
 
 ### your code goes here
 
+from sklearn.tree import DecisionTreeClassifier
+
+decision_tree = DecisionTreeClassifier()
+decision_tree.fit(features_train, labels_train)
+pred = decision_tree.predict(features_test)
+
+from sklearn.metrics import accuracy_score
+
+print (accuracy_score(pred, labels_test))
+
+print ("Importance")
+counter = 0
+for importance in decision_tree.feature_importances_:
+    if importance >= 0.2:
+        print str(importance) + ", count: " + str(counter)
+    counter += 1
 
 
