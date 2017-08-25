@@ -27,11 +27,10 @@ def isNaN(num):
 # 'total_stock_value', 'expenses', 'exercised_stock_options', 'other',
 # 'long_term_incentive', 'restricted_stock', 'director_fees'] (all units are in US dollars)
 
-#email features: ['to_messages', 'email_address', 'from_poi_to_this_person', 'to_messages'
+#email features: ['to_messages', 'email_address', 'from_poi_to_this_person',
 #  'from_this_person_to_poi', 'shared_receipt_with_poi']
 
 #POI label: ['poi'] (boolean, represented as integer)
-
 
 # features list is under my features
 # You will need to use more
@@ -40,6 +39,14 @@ def isNaN(num):
 ### Load the dictionary containing the dataset
 with open("final_project_dataset.pkl", "r") as data_file:
     data_dict = pickle.load(data_file)
+
+#checking number of data points
+# n_data_points = 0
+#
+# for person in data_dict:
+#     n_data_points += 1
+#
+# print "Data points: ", n_data_points
 
 ### Task 2: Remove outliers
 import matplotlib.pyplot as plt
@@ -114,9 +121,8 @@ for person, feature in data_dict.iteritems():
 my_dataset = data_dict
 
 ### Extract features and labels from dataset for local testing
-features_list = ['poi', 'deferred_income', 'other',
- 'restricted_stock', 'shared_receipt_with_poi', 'ratio_to_poi',
-                 'number_info']
+features_list = ['poi', 'bonus', 'expenses', 'exercised_stock_options',
+                 'other', 'shared_receipt_with_poi', 'ratio_to_poi']
 
 data = featureFormat(my_dataset, features_list, sort_keys = True)
 labels, features = targetFeatureSplit(data)
@@ -130,8 +136,6 @@ labels, features = targetFeatureSplit(data)
 # Provided to give you a starting point. Try a variety of classifiers.
 from sklearn import tree
 
-#I use feature scaling in pipeline and called it pipeline
-#this is only classifier
 clf = tree.DecisionTreeClassifier(min_samples_split=2)
 
 ### Task 5: Tune your classifier to achieve better than .3 precision and recall
@@ -142,38 +146,39 @@ clf = tree.DecisionTreeClassifier(min_samples_split=2)
 ### http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html
 
 # Example starting point. Try investigating other evaluation techniques!
-
-from sklearn.cross_validation import train_test_split
-features_train, features_test, labels_train, labels_test = \
-    train_test_split(features, labels, test_size=0.3, random_state=42)
-
-
 sss = StratifiedShuffleSplit(n_splits=1000, test_size=0.3, random_state=42)
 recall_list = []
 precision_list = []
 accuracy_list = []
+feature_importances_list = []
 features = np.array(features)
 labels = np.array(labels)
-k = 1
 
 for train_index, test_index in sss.split(features, labels):
     features_train, features_test = features[train_index], features[
         test_index]
     labels_train, labels_test = labels[train_index], labels[test_index]
 
-    pipeline = Pipeline([('scale', MinMaxScaler(feature_range=(0, 1))),
-                         ('clf', clf)])
-
-    pipeline.fit(features_train, labels_train)
-    pred = pipeline.predict(features_test)
+    clf.fit(features_train, labels_train)
+    pred = clf.predict(features_test)
 
     accuracy_list.append(accuracy_score(labels_test, pred))
     recall_list.append(recall_score(labels_test, pred))
     precision_list.append(precision_score(labels_test, pred))
+    #feature_importances_list.append(pipeline.steps[0][1].feature_importances_)
 
 print "Accuracy mean: ", np.mean(accuracy_list)
 print "Precision mean: ", np.mean(precision_list)
 print "Recall mean: ", np.mean(recall_list)
+
+
+# feature_importances_mean = np.mean(feature_importances_list, axis=0)
+# print "\nMean importances: "
+#
+# i = 0
+# while i < len(features_list) - 1:
+#     print features_list[i+1], ": ", "%.3f" % feature_importances_mean[i]
+#     i += 1
 
 
 ### Task 6: Dump your classifier, dataset, and features_list so anyone can
