@@ -4,6 +4,7 @@
     <extensionMap>
       <mapping pattern="platforms" type="PLAIN_TEXT" />
       <mapping pattern="partners_usage" type="PLAIN_TEXT" />
+      <mapping pattern="Currency DCH" type="Python" />
     </extensionMap>
   </component>
 </application>
