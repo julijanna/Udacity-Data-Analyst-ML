@@ -8,6 +8,7 @@
       <mapping pattern="platforms" type="PLAIN_TEXT" />
       <mapping pattern="partners_usage" type="PLAIN_TEXT" />
       <mapping pattern="Currency DCH" type="Python" />
+      <mapping pattern="python home directory" type="Python" />
       <mapping pattern="jobup browser traffic" type="Python" />
       <mapping pattern="Marketing Budget Export" type="Python" />
     </extensionMap>
