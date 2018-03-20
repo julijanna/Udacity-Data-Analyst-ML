@@ -7,6 +7,7 @@
       <mapping ext="ch" type="Markdown" />
       <mapping pattern="platforms" type="PLAIN_TEXT" />
       <mapping pattern="partners_usage" type="PLAIN_TEXT" />
+      <mapping pattern="Calendar data" type="Python" />
       <mapping pattern="Currency DCH" type="Python" />
       <mapping pattern="AdWords_get_campaigns" type="Python" />
       <mapping pattern="python home directory" type="Python" />
