@@ -10,6 +10,7 @@
       <mapping pattern="Calendar data" type="Python" />
       <mapping pattern="Currency DCH" type="Python" />
       <mapping pattern="AdWords_get_campaigns" type="Python" />
+      <mapping pattern="Marketing Budget Export 2017" type="Python" />
       <mapping pattern="python home directory" type="Python" />
       <mapping pattern="jobup browser traffic" type="Python" />
       <mapping pattern="Marketing Budget Export" type="Python" />
