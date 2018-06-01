@@ -14,6 +14,7 @@
       <mapping pattern="python home directory" type="Python" />
       <mapping pattern="jobup browser traffic" type="Python" />
       <mapping pattern="Marketing Budget Export" type="Python" />
+      <mapping pattern="playbook" type="YAML" />
     </extensionMap>
   </component>
 </application>
