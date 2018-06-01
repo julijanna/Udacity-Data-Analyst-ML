@@ -1,0 +1,16 @@
+<toolSet name="External Tools">
+  <tool name="GA job views daily" showInMainMenu="true" showInEditor="true" showInProject="true" showInSearchPopup="true" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true" CONNECTION_TYPE="REMOTE_SDK" CONNECTION_ID="vagrant:///Users/mkot/etl-analytics/Vagrant/home/vagrant/venv3.5/bin/python">
+    <exec>
+      <option name="COMMAND" value="/home/vagrant/etl-analytics/cronjobs/GA_job_views_daily.sh" />
+      <option name="PARAMETERS" value="jobs" />
+      <option name="WORKING_DIRECTORY" value="/home/vagrant/etl-analytics/cronjobs" />
+    </exec>
+  </tool>
+  <tool name="pip freeze" showInMainMenu="true" showInEditor="true" showInProject="true" showInSearchPopup="true" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true" CONNECTION_TYPE="NONE">
+    <exec>
+      <option name="COMMAND" value="pip" />
+      <option name="PARAMETERS" value="freeze" />
+      <option name="WORKING_DIRECTORY" value="/home/vagrant/etl-analytics/cronjobs" />
+    </exec>
+  </tool>
+</toolSet>
