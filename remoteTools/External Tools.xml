@@ -13,4 +13,11 @@
       <option name="WORKING_DIRECTORY" value="/home/vagrant/etl-analytics/cronjobs" />
     </exec>
   </tool>
+  <tool name="GA partner" showInMainMenu="true" showInEditor="true" showInProject="true" showInSearchPopup="true" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true" CONNECTION_TYPE="NONE">
+    <exec>
+      <option name="COMMAND" value="/home/vagrant/etl-analytics/cronjobs/GA_partners_daily.sh" />
+      <option name="PARAMETERS" value="jobs hrtoday" />
+      <option name="WORKING_DIRECTORY" value="/home/vagrant/etl-analytics/cronjobs" />
+    </exec>
+  </tool>
 </toolSet>
