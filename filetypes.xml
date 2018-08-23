@@ -17,6 +17,7 @@
       <mapping pattern="jobup browser traffic" type="Python" />
       <mapping pattern="Marketing Budget Export" type="Python" />
       <mapping pattern="test" type="SQL" />
+      <mapping pattern="002_Test" type="XHTML" />
       <mapping pattern="playbook" type="YAML" />
     </extensionMap>
   </component>
