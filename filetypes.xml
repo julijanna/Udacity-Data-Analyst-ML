@@ -8,6 +8,7 @@
       <mapping pattern="platforms" type="PLAIN_TEXT" />
       <mapping pattern="partners_usage" type="PLAIN_TEXT" />
       <mapping ext="dist" type="PLAIN_TEXT" />
+      <mapping ext="p12" type="PLAIN_TEXT" />
       <mapping pattern="Calendar data" type="Python" />
       <mapping pattern="Currency DCH" type="Python" />
       <mapping pattern="0_workplace_null" type="Python" />
